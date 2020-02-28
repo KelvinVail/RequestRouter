@@ -1,13 +1,17 @@
-﻿namespace RequestRouter
+﻿using System.Collections.Generic;
+
+namespace RequestRouter
 {
     internal class GoldenRequest : IGoldenRequest
     {
         public string RequestId { get; set; }
         public int Value { get; set; }
+        public List<string> Friends { get; set; }
         public string BestFriend { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+
 
         public void ConvertToBrokerRequest()
         {

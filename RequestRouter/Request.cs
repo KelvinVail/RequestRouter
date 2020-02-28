@@ -22,6 +22,8 @@ namespace RequestRouter
             goldenRequest.BestFriend = Friends.FirstOrDefault();
             goldenRequest.Age = 0;
 
+            goldenRequest.Friends = Friends;
+
             return goldenRequest;
         }
     }

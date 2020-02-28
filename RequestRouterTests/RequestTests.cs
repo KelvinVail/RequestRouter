@@ -58,5 +58,20 @@ namespace RequestRouterTests
             Assert.True(typeof(IGoldenRequest).GetMethod("ConvertToBrokerRequest").Name == "ConvertToBrokerRequest");
             
         }
+
+        [Fact]
+        public void AgentOneRequestExists()
+        {
+            var brokerOneRequest = new AgentOneRequest();
+        }
+
+        [Fact]
+        public void AgentOneRequestHasNecessaryFields()
+        {
+            Assert.NotNull(typeof(AgentOneRequest).GetProperty("BrokerName"));
+            Assert.NotNull(typeof(AgentOneRequest).GetProperty("RequestedCost"));
+            Assert.NotNull(typeof(AgentOneRequest).GetProperty("NumFriends"));
+        }
+
     }
 }
