@@ -10,7 +10,7 @@ namespace RequestRouterTests
 
         public RequestTests()
         {
-            request = new Request { Id = "123456789", Cost = 123, Friends = new List<string> { "Rita", "Sue", "Bob" }, Name="Gordon Bennett" };
+            request = new Request { Id = "123456789", Cost = 123, Friends = new List<string> { "Rita", "Sue", "Bob" }, Name = "Gordon Bennett" };
         }
         
         [Fact]
@@ -50,6 +50,13 @@ namespace RequestRouterTests
             Assert.Equal("Bennett", goldenRequest.LastName);
             Assert.Equal(0, goldenRequest.Age);
             Assert.Equal("123456789", goldenRequest.RequestId);
+        }
+
+        [Fact]
+        public void GoldenRequestHasConvertToBrokerRequestMethod()
+        {
+            Assert.True(typeof(IGoldenRequest).GetMethod("ConvertToBrokerRequest").Name == "ConvertToBrokerRequest");
+            
         }
     }
 }
