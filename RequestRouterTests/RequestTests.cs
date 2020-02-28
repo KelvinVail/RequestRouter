@@ -53,9 +53,9 @@ namespace RequestRouterTests
         }
 
         [Fact]
-        public void GoldenRequestHasConvertToBrokerRequestMethod()
+        public void GoldenRequestHasConvertToAgenRequestMethod()
         {
-            Assert.True(typeof(IGoldenRequest).GetMethod("ConvertToBrokerRequest").Name == "ConvertToBrokerRequest");
+            Assert.True(typeof(IGoldenRequest).GetMethod("ConvertToAgentRequest").Name == "ConvertToAgentRequest");
             
         }
 

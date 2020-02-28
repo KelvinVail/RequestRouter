@@ -13,7 +13,7 @@ namespace RequestRouter
         public int Age { get; set; }
 
 
-        public void ConvertToBrokerRequest()
+        public void ConvertToAgentRequest()
         {
             throw new System.NotImplementedException();
         }
