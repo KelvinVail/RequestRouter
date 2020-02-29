@@ -2,7 +2,7 @@
 {
     using RequestRouter;
 
-    public class RealRequestStub : RealRequest
+    public class RequestStub : Request
     {
     }
 }

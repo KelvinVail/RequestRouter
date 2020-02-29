@@ -12,9 +12,9 @@
             this.responders = responders;
         }
 
-        public IEnumerable<Response> GetResponses(RealRequest realRequest)
+        public IEnumerable<Response> GetResponses(Request request)
         {
-            return this.responders.Select(r => r.GetResponse(realRequest));
+            return this.responders.Select(r => r.GetResponse(request));
         }
     }
 }
