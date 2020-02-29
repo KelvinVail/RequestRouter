@@ -14,7 +14,7 @@
 
         public IEnumerable<Response> GetResponses(Request request)
         {
-            return this.responders.Select(r => r.GetResponse(request));
+            return this.responders.Select(r => r.Execute(request));
         }
     }
 }

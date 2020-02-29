@@ -9,7 +9,7 @@
     public class RouterTests
     {
         private readonly Router router;
-        private readonly Request request = new Request();
+        private readonly RequestStub request = new RequestStub();
         private readonly ResponseStub response = new ResponseStub { ResponseName = "Response" };
         private readonly ResponderSpy responder;
         private readonly ResponseStub responseTwo = new ResponseStub { ResponseName = "ResponseTwo" };

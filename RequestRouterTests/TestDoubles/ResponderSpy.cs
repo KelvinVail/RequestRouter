@@ -1,10 +1,16 @@
 ﻿namespace RequestRouterTests.TestDoubles
 {
+    using System;
     using RequestRouter;
 
     public class ResponderSpy : Responder
     {
         private readonly Response response;
+
+        public ResponderSpy()
+        {
+            this.response = new ResponseStub();
+        }
 
         public ResponderSpy(Response response)
         {
@@ -13,7 +19,9 @@
 
         public bool GetResponseCalled { get; private set; }
 
-        public override Response GetResponse(Request request)
+        protected override Type ValidRequestType => typeof(RequestStub);
+
+        protected override Response GetResponse(Request request)
         {
             this.GetResponseCalled = true;
             return this.response;

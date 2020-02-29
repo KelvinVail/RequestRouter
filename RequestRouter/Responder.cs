@@ -1,10 +1,22 @@
 ﻿namespace RequestRouter
 {
-    public class Responder
+    using System;
+
+    public abstract class Responder
     {
-        public virtual Response GetResponse(Request request)
+        protected abstract Type ValidRequestType { get; }
+
+        public Response Execute(Request request)
         {
-            return new Response();
+            return this.CanExecute(request) ? this.GetResponse(request) : null;
+        }
+
+        protected abstract Response GetResponse(Request request);
+
+        private bool CanExecute(Request request)
+        {
+            if (request == null) return false;
+            return request.GetType() == this.ValidRequestType;
         }
     }
 }
