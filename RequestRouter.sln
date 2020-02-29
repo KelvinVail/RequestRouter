@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter", "RequestRou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouterTests", "RequestRouterTests\RequestRouterTests.csproj", "{66AA7058-7823-40DB-A207-4FD69DE2C5A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D3AB673-C594-4202-9FEC-E6C3C16D0B79}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
