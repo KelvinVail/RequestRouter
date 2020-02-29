@@ -9,7 +9,7 @@
         public void GetResponseReturnsResponse()
         {
             var responder = new Responder();
-            var request = new Request();
+            var request = new RealRequest();
             var response = responder.GetResponse(request);
             Assert.IsType<Response>(response);
         }

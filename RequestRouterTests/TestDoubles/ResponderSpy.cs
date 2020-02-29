@@ -13,7 +13,7 @@
 
         public bool GetResponseCalled { get; private set; }
 
-        public override Response GetResponse(Request request)
+        public override Response GetResponse(RealRequest realRequest)
         {
             this.GetResponseCalled = true;
             return this.response;

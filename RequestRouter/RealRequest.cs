@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RequestRouter
 {
-    public class Request 
+    public class RealRequest 
     { 
         public string Id { get; set; }
         public int Cost { get; set; }

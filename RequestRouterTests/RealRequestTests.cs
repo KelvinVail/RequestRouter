@@ -4,19 +4,19 @@ using Xunit;
 
 namespace RequestRouterTests
 {
-    public class RequestTests
+    public class RealRequestTests
     {
-        private Request request;
+        private RealRequest _realRequest;
 
-        public RequestTests()
+        public RealRequestTests()
         {
-            request = new Request { Id = "123456789", Cost = 123, Friends = new List<string> { "Rita", "Sue", "Bob" }, Name = "Gordon Bennett" };
+            _realRequest = new RealRequest { Id = "123456789", Cost = 123, Friends = new List<string> { "Rita", "Sue", "Bob" }, Name = "Gordon Bennett" };
         }
         
         [Fact]
         public void RequestHasAnID()
         {
-            var request = new Request();
+            var request = new RealRequest();
             Assert.Null(request.Id);
             Assert.Null(request.Name);
             Assert.Equal(0, request.Cost);
@@ -36,14 +36,14 @@ namespace RequestRouterTests
         [Fact]
         public void RequestConvertReturnsAnIGolden()
         {
-            var golden = request.Convert();
+            var golden = _realRequest.Convert();
             Assert.IsAssignableFrom<IGoldenRequest>(golden);
         }
 
         [Fact]
         public void RequestConvertsToAGoldenRequest()
         {
-            var goldenRequest = request.Convert();
+            var goldenRequest = _realRequest.Convert();
             Assert.Equal(123, goldenRequest.Value);
             Assert.Equal("Rita", goldenRequest.BestFriend);
             Assert.Equal("Gordon", goldenRequest.FirstName);
