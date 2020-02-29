@@ -1,7 +1,6 @@
-﻿namespace RequestRouterTests.TestDoubles
+﻿namespace RequestRouter.Tests.TestDoubles
 {
     using System;
-    using RequestRouter;
 
     public class ResponderSpy : Responder
     {

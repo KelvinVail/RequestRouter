@@ -12,21 +12,10 @@
         }
 
         [Fact]
-        public void GoldenRequestHasNecessaryFields()
-        {
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("RequestId"));
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("Value"));
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("BestFriend"));
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("FirstName"));
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("LastName"));
-            Assert.NotNull(typeof(IGoldenRequest).GetProperty("Age"));
-        }
-
-        [Fact]
         public void RequestConvertReturnsAnIGolden()
         {
             var golden = this.request.Convert();
-            Assert.IsAssignableFrom<IGoldenRequest>(golden);
+            Assert.IsAssignableFrom<GoldenRequest>(golden);
         }
 
         [Fact]
@@ -39,12 +28,6 @@
             Assert.Equal("Bennett", goldenRequest.LastName);
             Assert.Equal(0, goldenRequest.Age);
             Assert.Equal("123456789", goldenRequest.RequestId);
-        }
-
-        [Fact]
-        public void GoldenRequestHasConvertToAgentRequestMethod()
-        {
-            Assert.NotNull(typeof(IGoldenRequest).GetMethod("ConvertToAgentRequest"));
         }
 
         [Fact]

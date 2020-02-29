@@ -1,7 +1,6 @@
-﻿namespace RequestRouterTests
+﻿namespace RequestRouter.Tests
 {
     using System;
-    using RequestRouter;
     using Xunit;
 
     public class RequestTests : Request

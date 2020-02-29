@@ -1,9 +1,8 @@
-﻿namespace RequestRouterTests
+﻿namespace RequestRouter.Tests
 {
     using System.Collections.Generic;
     using System.Linq;
-    using RequestRouter;
-    using RequestRouterTests.TestDoubles;
+    using RequestRouter.Tests.TestDoubles;
     using Xunit;
 
     public class RouterTests

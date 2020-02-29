@@ -6,7 +6,7 @@
     {
         protected abstract Type ValidRequestType { get; }
 
-        public Response Execute(Request request)
+        internal Response Execute(Request request)
         {
             if (request == null) return null;
             if (!this.CanExecute(request)) return null;

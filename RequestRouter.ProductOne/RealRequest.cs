@@ -5,15 +5,20 @@
 
     public class RealRequest
     {
+        public RealRequest()
+        {
+            this.Friends = new List<string>();
+        }
+
         public string Id { get; set; }
 
         public int Cost { get; set; }
 
         public string Name { get; set; }
 
-        public List<string> Friends { get; } = new List<string>();
+        public List<string> Friends { get; }
 
-        public IGoldenRequest Convert()
+        public GoldenRequest Convert()
         {
             var goldenRequest = new GoldenRequest
             {
@@ -23,7 +28,6 @@
                 Value = this.Cost,
                 BestFriend = this.Friends.FirstOrDefault(),
                 Age = 0,
-                Friends = this.Friends,
             };
 
             return goldenRequest;
