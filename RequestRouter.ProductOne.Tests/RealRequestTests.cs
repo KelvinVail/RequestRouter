@@ -1,8 +1,7 @@
-﻿using RequestRouter;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xunit;
 
-namespace RequestRouterTests
+namespace RequestRouter.ProductOne.Tests
 {
     public class RealRequestTests
     {

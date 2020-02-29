@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RequestRouter
+namespace RequestRouter.ProductOne
 {
     public interface IGoldenRequest
     {

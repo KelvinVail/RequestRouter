@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductOne", "RequestRouter.ProductOne\RequestRouter.ProductOne.csproj", "{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductOne.Tests", "RequestRouter.ProductOne.Tests\RequestRouter.ProductOne.Tests.csproj", "{858F8283-7077-43B3-8E1F-27EE782FDF68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{66AA7058-7823-40DB-A207-4FD69DE2C5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66AA7058-7823-40DB-A207-4FD69DE2C5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66AA7058-7823-40DB-A207-4FD69DE2C5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
