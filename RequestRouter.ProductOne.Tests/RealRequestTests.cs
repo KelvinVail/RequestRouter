@@ -1,29 +1,19 @@
-﻿using System.Collections.Generic;
-using Xunit;
-
-namespace RequestRouter.ProductOne.Tests
+﻿namespace RequestRouter.ProductOne.Tests
 {
+    using Xunit;
+
     public class RealRequestTests
     {
-        private RealRequest _realRequest;
+        private readonly RealRequest request;
 
         public RealRequestTests()
         {
-            _realRequest = new RealRequest { Id = "123456789", Cost = 123, Friends = new List<string> { "Rita", "Sue", "Bob" }, Name = "Gordon Bennett" };
-        }
-        
-        [Fact]
-        public void RequestHasAnID()
-        {
-            var request = new RealRequest();
-            Assert.Null(request.Id);
-            Assert.Null(request.Name);
-            Assert.Equal(0, request.Cost);
-            Assert.Null(request.Friends);
+            this.request = new RealRequest { Id = "123456789", Cost = 123, Friends = { "Rita", "Sue", "Bob" }, Name = "Gordon Bennett" };
         }
 
         [Fact]
-        public void GoldenRequestHasNecessaryFields() {
+        public void GoldenRequestHasNecessaryFields()
+        {
             Assert.NotNull(typeof(IGoldenRequest).GetProperty("RequestId"));
             Assert.NotNull(typeof(IGoldenRequest).GetProperty("Value"));
             Assert.NotNull(typeof(IGoldenRequest).GetProperty("BestFriend"));
@@ -35,14 +25,14 @@ namespace RequestRouter.ProductOne.Tests
         [Fact]
         public void RequestConvertReturnsAnIGolden()
         {
-            var golden = _realRequest.Convert();
+            var golden = this.request.Convert();
             Assert.IsAssignableFrom<IGoldenRequest>(golden);
         }
 
         [Fact]
         public void RequestConvertsToAGoldenRequest()
         {
-            var goldenRequest = _realRequest.Convert();
+            var goldenRequest = this.request.Convert();
             Assert.Equal(123, goldenRequest.Value);
             Assert.Equal("Rita", goldenRequest.BestFriend);
             Assert.Equal("Gordon", goldenRequest.FirstName);
@@ -52,16 +42,9 @@ namespace RequestRouter.ProductOne.Tests
         }
 
         [Fact]
-        public void GoldenRequestHasConvertToAgenRequestMethod()
+        public void GoldenRequestHasConvertToAgentRequestMethod()
         {
-            Assert.True(typeof(IGoldenRequest).GetMethod("ConvertToAgentRequest").Name == "ConvertToAgentRequest");
-            
-        }
-
-        [Fact]
-        public void AgentOneRequestExists()
-        {
-            var brokerOneRequest = new AgentOneRequest();
+            Assert.NotNull(typeof(IGoldenRequest).GetMethod("ConvertToAgentRequest"));
         }
 
         [Fact]
@@ -71,6 +54,5 @@ namespace RequestRouter.ProductOne.Tests
             Assert.NotNull(typeof(AgentOneRequest).GetProperty("RequestedCost"));
             Assert.NotNull(typeof(AgentOneRequest).GetProperty("NumFriends"));
         }
-
     }
 }

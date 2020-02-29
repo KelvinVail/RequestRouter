@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter", "RequestRouter\RequestRouter.csproj", "{9614BE17-4FE2-4CC9-BD42-F151632B700B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouterTests", "RequestRouterTests\RequestRouterTests.csproj", "{66AA7058-7823-40DB-A207-4FD69DE2C5A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.Tests", "RequestRouterTests\RequestRouter.Tests.csproj", "{66AA7058-7823-40DB-A207-4FD69DE2C5A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D3AB673-C594-4202-9FEC-E6C3C16D0B79}"
 	ProjectSection(SolutionItems) = preProject
