@@ -4,6 +4,11 @@
 
     public abstract class Request
     {
-        public static string Id => Guid.NewGuid().ToString();
+        protected Request()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
+        public string Id { get; }
     }
 }

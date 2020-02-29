@@ -9,7 +9,7 @@
         [Fact]
         public void RequestHasGuidId()
         {
-            Assert.True(Guid.TryParse(Id, out _));
+            Assert.True(Guid.TryParse(this.Id, out _));
         }
     }
 }

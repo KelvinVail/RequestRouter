@@ -7,12 +7,12 @@
     public class ResponderTests
     {
         private readonly ResponderSpy responder = new ResponderSpy();
+        private readonly RequestStub request = new RequestStub();
 
         [Fact]
         public void GetResponseReturnsResponse()
         {
-            var request = new RequestStub();
-            var response = this.responder.Execute(request);
+            var response = this.responder.Execute(this.request);
             Assert.IsAssignableFrom<Response>(response);
         }
 
@@ -29,6 +29,20 @@
         {
             var response = this.responder.Execute(null);
             Assert.Null(response);
+        }
+
+        [Fact]
+        public void ResponseContainsRequestId()
+        {
+            var response = this.responder.Execute(this.request);
+            Assert.Equal(this.request.Id, response.RequestId);
+        }
+
+        [Fact]
+        public void ResponseContainsResponderName()
+        {
+            var response = this.responder.Execute(this.request);
+            Assert.Equal(this.responder.GetType().Name, response.ResponderName);
         }
     }
 }

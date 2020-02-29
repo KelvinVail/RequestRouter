@@ -8,7 +8,12 @@
 
         public Response Execute(Request request)
         {
-            return this.CanExecute(request) ? this.GetResponse(request) : null;
+            if (!this.CanExecute(request)) return null;
+
+            var response = this.GetResponse(request);
+            response.RequestId = request?.Id;
+            response.ResponderName = this.GetType().Name;
+            return response;
         }
 
         protected abstract Response GetResponse(Request request);
