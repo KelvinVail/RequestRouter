@@ -2,7 +2,7 @@
 {
     public class Responder
     {
-        public Response GetResponse(Request request)
+        public virtual Response GetResponse(Request request)
         {
             return new Response();
         }

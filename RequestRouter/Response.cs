@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter
 {
-    public sealed class Response
+    public class Response
     {
     }
 }
