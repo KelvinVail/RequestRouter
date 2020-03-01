@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter.Tests.TestDoubles
 {
-    public class InvalidRequestStub : Request
+    public class InvalidRequestStub : RequestBase
     {
     }
 }

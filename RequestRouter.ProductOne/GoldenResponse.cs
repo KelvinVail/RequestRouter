@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter.ProductOne
 {
-    public class GoldenResponse : Response
+    public class GoldenResponse : ResponseBase
     {
     }
 }

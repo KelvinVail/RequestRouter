@@ -5,16 +5,16 @@
 
     public sealed class Router
     {
-        private readonly IEnumerable<Responder> responders;
+        private readonly IEnumerable<ResponderBase> responders;
 
-        public Router(IEnumerable<Responder> responders)
+        public Router(IEnumerable<ResponderBase> responders)
         {
             this.responders = responders;
         }
 
-        public IEnumerable<Response> GetResponses(Request request)
+        public IEnumerable<ResponseBase> GetResponses(RequestBase requestBase)
         {
-            return this.responders.Select(r => r.Execute(request));
+            return this.responders.Select(r => r.Execute(requestBase));
         }
     }
 }

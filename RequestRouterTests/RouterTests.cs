@@ -11,13 +11,13 @@
         private readonly RequestStub request = new RequestStub();
         private readonly ResponseStub response = new ResponseStub { ResponseName = "Response" };
         private readonly ResponderSpy responder;
-        private readonly ResponseStub responseTwo = new ResponseStub { ResponseName = "ResponseTwo" };
+        private readonly ResponseStub responderTwo = new ResponseStub { ResponseName = "ResponseTwo" };
 
         public RouterTests()
         {
             this.responder = new ResponderSpy(this.response);
-            var responderTwo = new ResponderSpy(this.responseTwo);
-            var responders = new List<Responder> { this.responder, responderTwo };
+            var responderTwo = new ResponderSpy(this.responderTwo);
+            var responders = new List<ResponderBase> { this.responder, responderTwo };
             this.router = new Router(responders);
         }
 
@@ -25,7 +25,7 @@
         public void GetResponsesReturnsResponses()
         {
             var responses = this.router.GetResponses(this.request);
-            Assert.IsAssignableFrom<IEnumerable<Response>>(responses);
+            Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
         }
 
         [Fact]
@@ -48,7 +48,7 @@
         {
             var responses = this.router.GetResponses(this.request).ToList();
             Assert.Contains(this.response, responses);
-            Assert.Contains(this.responseTwo, responses);
+            Assert.Contains(this.responderTwo, responses);
         }
 
         [Fact]

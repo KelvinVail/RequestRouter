@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter
 {
-    public abstract class Response
+    public abstract class ResponseBase
     {
         public string RequestId { get; internal set; }
 

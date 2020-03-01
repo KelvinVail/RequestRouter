@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductOne", "RequestRouter.ProductOne\RequestRouter.ProductOne.csproj", "{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductOne", "RequestRouter.ProductOne\RequestRouter.ProductOne.csproj", "{BAA365FC-FEB5-4EDF-A03E-422B91D7DA33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductOne.Tests", "RequestRouter.ProductOne.Tests\RequestRouter.ProductOne.Tests.csproj", "{858F8283-7077-43B3-8E1F-27EE782FDF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductOne.Tests", "RequestRouter.ProductOne.Tests\RequestRouter.ProductOne.Tests.csproj", "{858F8283-7077-43B3-8E1F-27EE782FDF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B31768FE-FF4B-441C-9837-60EC6A411494}
+	EndGlobalSection
+	GlobalSection(NDepend) = preSolution
+		Project = ".\RequestRouter.ndproj"
 	EndGlobalSection
 EndGlobal

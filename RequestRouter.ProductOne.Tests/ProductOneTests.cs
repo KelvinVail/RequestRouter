@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using RequestRouter.ProductOne.Responders;
     using Xunit;
 
     public class ProductOneTests
@@ -11,21 +10,21 @@
 
         public ProductOneTests()
         {
-            this.router = new Router(new List<Responder> { new ResponderOne() });
+            this.router = new Router(new List<ResponderBase> { new ResponderOne() });
         }
 
         [Fact]
         public void ResponderOneInheritsResponder()
         {
             var responderOne = new ResponderOne();
-            Assert.IsAssignableFrom<Responder>(responderOne);
+            Assert.IsAssignableFrom<ResponderBase>(responderOne);
         }
 
         [Fact]
         public void GoldenResponseInheritsResponse()
         {
             var response = new GoldenResponse();
-            Assert.IsAssignableFrom<Response>(response);
+            Assert.IsAssignableFrom<ResponseBase>(response);
         }
 
         [Fact]

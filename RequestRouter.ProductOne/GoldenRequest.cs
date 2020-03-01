@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class GoldenRequest : Request
+    public class GoldenRequest : RequestBase
     {
         public GoldenRequest()
         {

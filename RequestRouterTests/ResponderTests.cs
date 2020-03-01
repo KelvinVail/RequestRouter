@@ -13,14 +13,14 @@
 
         public ResponderTests()
         {
-            this.router = new Router(new List<Responder> { this.responder });
+            this.router = new Router(new List<ResponderBase> { this.responder });
         }
 
         [Fact]
         public void GetResponseReturnsResponse()
         {
             var responses = this.router.GetResponses(this.request);
-            Assert.IsAssignableFrom<Response>(responses.FirstOrDefault());
+            Assert.IsAssignableFrom<ResponseBase>(responses.FirstOrDefault());
         }
 
         [Fact]
