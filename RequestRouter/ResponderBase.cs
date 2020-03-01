@@ -12,7 +12,7 @@
             if (!this.CanExecute(requestBase)) return null;
 
             var response = this.GetResponse(requestBase);
-            response.RequestId = requestBase.Id;
+            response.RequestLogId = requestBase.LogId;
             response.ResponderName = this.GetType().Name;
             return response;
         }

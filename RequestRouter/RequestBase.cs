@@ -6,9 +6,9 @@
     {
         protected RequestBase()
         {
-            this.Id = Guid.NewGuid().ToString();
+            this.LogId = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; }
+        public string LogId { get; }
     }
 }

@@ -1011,7 +1011,7 @@ select new {
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="True"><![CDATA[// <Name>Avoid methods with too many parameters</Name>
 // <Id>ND1004:AvoidMethodsWithTooManyParameters</Id>
 warnif count > 0 from m in JustMyCode.Methods where 
-  m.NbParameters >= 7 &&
+  m.NbParameters >= 4 &&
 
   // Don't match a method that overrides a third-party method with many parameters
   !m.OverriddensBase.Any(mo => mo.IsThirdParty) &&
@@ -1019,7 +1019,7 @@ warnif count > 0 from m in JustMyCode.Methods where
   // Don't match a constructor that calls a base constructor with many parameters
   !(m.IsConstructor && m.MethodsCalled.Any(
      mc => mc.IsConstructor && 
-           mc.NbParameters >= 7 && 
+           mc.NbParameters >= 4 && 
            m.ParentType.DeriveFrom(mc.ParentType))) &&
 
   // Don't match DllImport P/invoke methods with many parameters
@@ -1029,22 +1029,22 @@ warnif count > 0 from m in JustMyCode.Methods where
 select new { 
    m, 
    m.NbParameters,
-   Debt = m.NbParameters.Linear(7, 1,  40, 6).ToHours().ToDebt(),
+   Debt = m.NbParameters.Linear(4, 1,  40, 6).ToHours().ToDebt(),
 
-   // The annual interest varies linearly from interest for severity Medium for 7 parameters
+   // The annual interest varies linearly from interest for severity Medium for 4 parameters
    // to interest for severity Critical for 40 parameters
-   AnnualInterest = m.NbParameters.Linear(7,  Severity.Medium.AnnualInterestThreshold().Value.TotalMinutes, 
+   AnnualInterest = m.NbParameters.Linear(4,  Severity.Medium.AnnualInterestThreshold().Value.TotalMinutes, 
                                           40, Severity.Critical.AnnualInterestThreshold().Value.TotalMinutes).ToMinutes().ToAnnualInterest()
 }
 
 //<Description>
-// This rule matches methods with 7 or more parameters.
+// This rule matches methods with 4 or more parameters.
 // Such method is painful to call and might degrade performance.
 // See the definition of the *NbParameters* metric here: 
 // https://www.ndepend.com/docs/code-metrics#NbParameters
 //
 // This rule doesn't match a method that overrides a third-party method
-// with 7 or more parameters because such situation is the consequence
+// with 4 or more parameters because such situation is the consequence
 // of a lower-level problem.
 //
 // For the same reason, this rule doesn't match a constructor that calls a 

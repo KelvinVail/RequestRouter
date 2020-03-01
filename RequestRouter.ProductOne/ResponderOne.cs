@@ -4,17 +4,27 @@
 
     public sealed class ResponderOne : ResponderBase
     {
-        protected override Type ValidRequestType => typeof(GoldenRequest);
+        protected override Type ValidRequestType => typeof(StandardRequest);
 
         protected override ResponseBase GetResponse(RequestBase requestBase)
         {
-            //// TODO Convert GoldenBaseRequest to structure expected by this responder
+            var standardRequest = (StandardRequest)requestBase;
+            //// Convert StandardRequest to structure expected by this responder
 
-            //// TODO Call the responder
+            //// Call the responder
 
-            //// TODO Convert _baseResponse from this responder to GoldenBaseResponse
+            //// Convert response from this responder to StandardResponse
 
-            return new GoldenResponse();
+            return ToStandardResponse(standardRequest);
+        }
+
+        private static StandardResponse ToStandardResponse(StandardRequest request)
+        {
+            return new StandardResponse
+            {
+                Id = "ResponseId",
+                RequestId = request.Id,
+            };
         }
     }
 }

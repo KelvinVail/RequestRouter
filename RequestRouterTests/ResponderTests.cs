@@ -42,7 +42,7 @@
         public void ResponseContainsRequestId()
         {
             var response = this.router.GetResponses(this.request).First();
-            Assert.Equal(this.request.Id, response.RequestId);
+            Assert.Equal(this.request.LogId, response.RequestLogId);
         }
 
         [Fact]

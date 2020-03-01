@@ -6,9 +6,9 @@
     public class RequestBaseTests : RequestBase
     {
         [Fact]
-        public void RequestHasGuidId()
+        public void RequestHasGuidLogId()
         {
-            Assert.True(Guid.TryParse(this.Id, out _));
+            Assert.True(Guid.TryParse(this.LogId, out _));
         }
     }
 }
