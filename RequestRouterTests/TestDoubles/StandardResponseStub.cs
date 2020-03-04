@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter.Tests.TestDoubles
 {
-    public class ResponseStub : ResponseBase
+    public class StandardResponseStub : StandardResponseBase
     {
         public string ResponseName { get; set; }
     }

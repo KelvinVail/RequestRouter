@@ -6,9 +6,9 @@
     {
         protected override Type ValidRequestType => typeof(StandardRequest);
 
-        protected override ResponseBase GetResponse(RequestBase requestBase)
+        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequestBase)
         {
-            var standardRequest = (StandardRequest)requestBase;
+            var standardRequest = (StandardRequest)standardRequestBase;
             //// Convert StandardRequest to structure expected by this responder
 
             //// Call the responder
@@ -18,12 +18,12 @@
             return ToStandardResponse(standardRequest);
         }
 
-        private static StandardResponse ToStandardResponse(StandardRequest request)
+        private static StandardResponse ToStandardResponse(StandardRequest standardRequest)
         {
             return new StandardResponse
             {
                 Id = "ResponseId",
-                RequestId = request.Id,
+                RequestId = standardRequest.Id,
             };
         }
     }

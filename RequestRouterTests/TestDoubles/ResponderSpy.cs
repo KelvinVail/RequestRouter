@@ -4,26 +4,26 @@
 
     public class ResponderSpy : ResponderBase
     {
-        private readonly ResponseBase response;
+        private readonly StandardResponseBase standardResponse;
 
         public ResponderSpy()
         {
-            this.response = new ResponseStub();
+            this.standardResponse = new StandardResponseStub();
         }
 
-        public ResponderSpy(ResponseBase response)
+        public ResponderSpy(StandardResponseBase standardResponse)
         {
-            this.response = response;
+            this.standardResponse = standardResponse;
         }
 
         public bool GetResponseCalled { get; private set; }
 
-        protected override Type ValidRequestType => typeof(RequestStub);
+        protected override Type ValidRequestType => typeof(StandardRequestStub);
 
-        protected override ResponseBase GetResponse(RequestBase requestBase)
+        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequestBase)
         {
             this.GetResponseCalled = true;
-            return this.response;
+            return this.standardResponse;
         }
     }
 }

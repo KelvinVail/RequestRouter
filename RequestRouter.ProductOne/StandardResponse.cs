@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter.ProductOne
 {
-    public class StandardResponse : ResponseBase
+    public class StandardResponse : StandardResponseBase
     {
         public string Id { get; set; }
 

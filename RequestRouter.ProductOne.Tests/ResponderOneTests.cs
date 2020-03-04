@@ -17,14 +17,14 @@
         public void StandardResponseInheritsResponseBase()
         {
             var response = new StandardResponse();
-            Assert.IsAssignableFrom<ResponseBase>(response);
+            Assert.IsAssignableFrom<StandardResponseBase>(response);
         }
 
         [Fact]
         public void StandardRequestInheritsRequestBase()
         {
             var request = new StandardRequest();
-            Assert.IsAssignableFrom<RequestBase>(request);
+            Assert.IsAssignableFrom<StandardRequestBase>(request);
         }
 
         [Fact]

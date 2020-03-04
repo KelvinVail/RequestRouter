@@ -9,7 +9,7 @@
     {
         private readonly Router router;
         private readonly ResponderSpy responder = new ResponderSpy();
-        private readonly RequestStub request = new RequestStub();
+        private readonly StandardRequestStub standardRequest = new StandardRequestStub();
 
         public ResponderTests()
         {
@@ -19,14 +19,14 @@
         [Fact]
         public void GetResponseReturnsResponse()
         {
-            var responses = this.router.GetResponses(this.request);
-            Assert.IsAssignableFrom<ResponseBase>(responses.FirstOrDefault());
+            var responses = this.router.GetResponses(this.standardRequest);
+            Assert.IsAssignableFrom<StandardResponseBase>(responses.FirstOrDefault());
         }
 
         [Fact]
         public void OnlyRespondToRequestsThatCanBeHandled()
         {
-            var invalidRequest = new InvalidRequestStub();
+            var invalidRequest = new InvalidStandardRequestStub();
             var response = this.router.GetResponses(invalidRequest).First();
             Assert.Null(response);
         }
@@ -41,14 +41,14 @@
         [Fact]
         public void ResponseContainsRequestId()
         {
-            var response = this.router.GetResponses(this.request).First();
-            Assert.Equal(this.request.LogId, response.RequestLogId);
+            var response = this.router.GetResponses(this.standardRequest).First();
+            Assert.Equal(this.standardRequest.LogId, response.RequestLogId);
         }
 
         [Fact]
         public void ResponseContainsResponderName()
         {
-            var response = this.router.GetResponses(this.request).First();
+            var response = this.router.GetResponses(this.standardRequest).First();
             Assert.Equal(this.responder.GetType().Name, response.ResponderName);
         }
     }

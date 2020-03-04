@@ -2,9 +2,9 @@
 {
     using System;
 
-    public abstract class RequestBase
+    public abstract class StandardRequestBase
     {
-        protected RequestBase()
+        protected StandardRequestBase()
         {
             this.LogId = Guid.NewGuid().ToString();
         }

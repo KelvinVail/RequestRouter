@@ -6,22 +6,22 @@
     {
         protected abstract Type ValidRequestType { get; }
 
-        internal ResponseBase Execute(RequestBase requestBase)
+        internal StandardResponseBase Execute(StandardRequestBase standardRequestBase)
         {
-            if (requestBase == null) return null;
-            if (!this.CanExecute(requestBase)) return null;
+            if (standardRequestBase == null) return null;
+            if (!this.CanExecute(standardRequestBase)) return null;
 
-            var response = this.GetResponse(requestBase);
-            response.RequestLogId = requestBase.LogId;
+            var response = this.GetResponse(standardRequestBase);
+            response.RequestLogId = standardRequestBase.LogId;
             response.ResponderName = this.GetType().Name;
             return response;
         }
 
-        protected abstract ResponseBase GetResponse(RequestBase requestBase);
+        protected abstract StandardResponseBase GetResponse(StandardRequestBase standardRequestBase);
 
-        private bool CanExecute(RequestBase requestBase)
+        private bool CanExecute(StandardRequestBase standardRequestBase)
         {
-            return requestBase.GetType() == this.ValidRequestType;
+            return standardRequestBase.GetType() == this.ValidRequestType;
         }
     }
 }
