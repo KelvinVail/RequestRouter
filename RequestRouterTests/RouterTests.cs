@@ -59,5 +59,46 @@
             Assert.Contains("Response", responseNames);
             Assert.Contains("ResponseTwo", responseNames);
         }
+
+        [Fact]
+        public void GetResponsesAcceptsABespokeRequest()
+        {
+            var bespokeRequest = new BespokeRequestStub();
+            var responses = this.router.GetResponses(bespokeRequest);
+            Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
+        }
+
+        [Fact]
+        public void WhenRequestIsBespokeItIsConvertedToStandard()
+        {
+            var bespokeRequest = new BespokeRequestStub();
+            this.router.GetResponses(bespokeRequest);
+            Assert.True(bespokeRequest.ConvertedToStandard);
+        }
+
+        [Fact]
+        public void WhenRequestIsNullReturnNull()
+        {
+            var responses = this.router.GetResponses((RequestBase)null);
+            Assert.Null(responses);
+        }
+
+        [Fact]
+        public void WhenRequestIsBespokeResponderIsCalled()
+        {
+            var bespokeRequest = new BespokeRequestStub();
+            this.router.GetResponses(bespokeRequest);
+            Assert.True(this.responder.GetResponseCalled);
+        }
+
+        [Fact]
+        public void WhenRequestIsBespokeResponderResponseIsReturned()
+        {
+            var bespokeRequest = new BespokeRequestStub();
+            var responses = this.router.GetResponses(bespokeRequest);
+            var responseNames = responses.Cast<BespokeResponseStub>().Select(r => r.ResponseName).ToList();
+            Assert.Contains("Response", responseNames);
+            Assert.Contains("ResponseTwo", responseNames);
+        }
     }
 }

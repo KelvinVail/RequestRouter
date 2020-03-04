@@ -34,7 +34,7 @@
         [Fact]
         public void ReturnNullIfRequestIsNull()
         {
-            var response = this.router.GetResponses(null).First();
+            var response = this.router.GetResponses((StandardRequestBase)null).First();
             Assert.Null(response);
         }
 
