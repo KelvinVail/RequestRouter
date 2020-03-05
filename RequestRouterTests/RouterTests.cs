@@ -84,14 +84,6 @@
         }
 
         [Fact]
-        public void WhenRequestIsBespokeResponderIsCalled()
-        {
-            var bespokeRequest = new BespokeRequestStub();
-            this.router.GetResponses(bespokeRequest);
-            Assert.True(this.responder.GetResponseCalled);
-        }
-
-        [Fact]
         public void WhenRequestIsBespokeResponderResponseIsReturned()
         {
             var bespokeRequest = new BespokeRequestStub();

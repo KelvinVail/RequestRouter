@@ -12,9 +12,8 @@
 
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
-            if (standardResponse is null) return null;
             var stub = (StandardResponseStub)standardResponse;
-            return new BespokeResponseStub { ResponseName = stub.ResponseName };
+            return new BespokeResponseStub { ResponseName = stub?.ResponseName };
         }
     }
 }

@@ -21,9 +21,9 @@
         {
             if (request is null) return null;
 
-            var responses = new List<ResponseBase>();
-            this.responders.ToList().ForEach(r => responses.Add(r.Execute(request)));
-            return responses;
+            var standardRequest = request.ToStandard();
+            var standardResponse = this.GetResponses(standardRequest);
+            return standardResponse.Select(request.FromStandard);
         }
     }
 }
