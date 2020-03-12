@@ -6,11 +6,11 @@
 
     public class ResponderOneTests
     {
-        private readonly Router router;
+        private readonly RequestOneHandler requestHandler;
 
         public ResponderOneTests()
         {
-            this.router = new Router(new List<ResponderBase> { new ResponderOne() });
+            this.requestHandler = new RequestOneHandler(new List<ResponderBase> { new ResponderOne() });
         }
 
         [Fact]
@@ -35,40 +35,47 @@
         }
 
         [Fact]
-        public void ResponderOneAcceptsStandardRequest()
+        public void ResponderOneAcceptsRequest()
         {
-            var request = new StandardRequest();
-            var response = this.router.GetResponses(request).First();
-            Assert.IsType<StandardResponse>(response);
+            var request = GetRequestExample();
+            var response = this.requestHandler.GetResponses(request).First();
+            Assert.IsAssignableFrom<ResponseBase>(response);
         }
 
         [Fact]
         public void ResponseContainsResponderName()
         {
-            var request = GetStandardRequestExample();
-            var response = this.router.GetResponses(request).First();
+            var request = GetRequestExample();
+            var response = this.requestHandler.GetResponses(request).First();
             Assert.Equal("ResponderOne", response.ResponderName);
+        }
+
+        [Fact]
+        public void RequestIdCanBeSet()
+        {
+            var request = GetRequestExample();
+            Assert.Equal("RequestId", request.Id);
         }
 
         [Fact]
         public void ResponseContainsRequestId()
         {
-            var request = GetStandardRequestExample();
-            var response = (StandardResponse)this.router.GetResponses(request).First();
+            var request = GetRequestExample();
+            var response = this.requestHandler.GetResponses(request).Cast<ResponseOne>().First();
             Assert.Equal("RequestId", response.RequestId);
         }
 
         [Fact]
         public void ResponseContainsAnId()
         {
-            var request = GetStandardRequestExample();
-            var response = (StandardResponse)this.router.GetResponses(request).First();
+            var request = GetRequestExample();
+            var response = this.requestHandler.GetResponses(request).Cast<ResponseOne>().First();
             Assert.Equal("ResponseId", response.Id);
         }
 
-        private static StandardRequest GetStandardRequestExample()
+        private static RequestOne GetRequestExample()
         {
-            return new StandardRequest
+            return new RequestOne()
             {
                 Id = "RequestId",
             };

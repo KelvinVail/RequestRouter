@@ -1,11 +1,7 @@
 ﻿namespace RequestRouter.ProductOne
 {
-    using System;
-
     public sealed class ResponderOne : ResponderBase
     {
-        protected override Type ValidRequestType => typeof(StandardRequest);
-
         protected override StandardResponseBase GetResponse(StandardRequestBase request)
         {
             var standardRequest = (StandardRequest)request;
@@ -22,7 +18,6 @@
         {
             return new StandardResponse
             {
-                Id = "ResponseId",
                 RequestId = standardRequest.Id,
             };
         }

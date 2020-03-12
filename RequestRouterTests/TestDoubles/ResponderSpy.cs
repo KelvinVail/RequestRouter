@@ -18,8 +18,6 @@
 
         public bool GetResponseCalled { get; private set; }
 
-        protected override Type ValidRequestType => typeof(StandardRequestStub);
-
         protected override StandardResponseBase GetResponse(StandardRequestBase standardRequestBase)
         {
             this.GetResponseCalled = true;

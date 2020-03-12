@@ -7,55 +7,45 @@
 
     public class RouterTests
     {
-        private readonly Router router;
-        private readonly StandardRequestStub standardRequest = new StandardRequestStub();
-        private readonly StandardResponseStub standardResponse = new StandardResponseStub { ResponseName = "Response" };
+        private readonly RequestHandlerSpy requestHandler;
+        private readonly RequestStub request = new RequestStub();
         private readonly ResponderSpy responder;
-        private readonly StandardResponseStub responseTwo = new StandardResponseStub { ResponseName = "ResponseTwo" };
 
         public RouterTests()
         {
-            this.responder = new ResponderSpy(this.standardResponse);
-            var responderTwo = new ResponderSpy(this.responseTwo);
+            this.responder = new ResponderSpy(new StandardResponseStub { ResponseName = "Response" });
+            var responderTwo = new ResponderSpy(new StandardResponseStub { ResponseName = "ResponseTwo" });
             var responders = new List<ResponderBase> { this.responder, responderTwo };
-            this.router = new Router(responders);
+            this.requestHandler = new RequestHandlerSpy(responders);
         }
 
         [Fact]
         public void GetResponsesReturnsResponses()
         {
-            var responses = this.router.GetResponses(this.standardRequest);
-            Assert.IsAssignableFrom<IEnumerable<StandardResponseBase>>(responses);
+            var responses = this.requestHandler.GetResponses(this.request);
+            Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
         }
 
         [Fact]
         public void OnGetResponsesResponderIsCalled()
         {
-            var responses = this.router.GetResponses(this.standardRequest);
+            var responses = this.requestHandler.GetResponses(this.request);
             Assert.NotEmpty(responses);
             Assert.True(this.responder.GetResponseCalled);
         }
 
         [Fact]
-        public void OnGetResponsesResponderResponseIsReturned()
+        public void OnGetResponsesMultipleResponsesCanBeReturned()
         {
-            var responses = this.router.GetResponses(this.standardRequest);
-            Assert.Contains(this.standardResponse, responses);
-        }
-
-        [Fact]
-        public void OnGetResponsesMultipleRespondersAreCalled()
-        {
-            var responses = this.router.GetResponses(this.standardRequest).ToList();
-            Assert.Contains(this.standardResponse, responses);
-            Assert.Contains(this.responseTwo, responses);
+            var responses = this.requestHandler.GetResponses(this.request).ToList();
+            Assert.True(responses.Count > 1);
         }
 
         [Fact]
         public void OnGetResponsesSubTypePropertiesAreMaintained()
         {
-            var responses = this.router.GetResponses(this.standardRequest);
-            var responseNames = responses.Cast<StandardResponseStub>().Select(r => r.ResponseName).ToList();
+            var responses = this.requestHandler.GetResponses(this.request);
+            var responseNames = responses.Cast<ResponseStub>().Select(r => r.ResponseName).ToList();
             Assert.Contains("Response", responseNames);
             Assert.Contains("ResponseTwo", responseNames);
         }
@@ -63,32 +53,32 @@
         [Fact]
         public void GetResponsesAcceptsABespokeRequest()
         {
-            var bespokeRequest = new BespokeRequestStub();
-            var responses = this.router.GetResponses(bespokeRequest);
+            var bespokeRequest = new RequestStub();
+            var responses = this.requestHandler.GetResponses(bespokeRequest);
             Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
         }
 
         [Fact]
         public void WhenRequestIsBespokeItIsConvertedToStandard()
         {
-            var bespokeRequest = new BespokeRequestStub();
-            this.router.GetResponses(bespokeRequest);
-            Assert.True(bespokeRequest.ConvertedToStandard);
+            var bespokeRequest = new RequestStub();
+            this.requestHandler.GetResponses(bespokeRequest);
+            Assert.True(this.requestHandler.ConvertedToStandard);
         }
 
         [Fact]
         public void WhenRequestIsNullReturnNull()
         {
-            var responses = this.router.GetResponses((RequestBase)null);
+            var responses = this.requestHandler.GetResponses(null);
             Assert.Null(responses);
         }
 
         [Fact]
         public void WhenRequestIsBespokeResponderResponseIsReturned()
         {
-            var bespokeRequest = new BespokeRequestStub();
-            var responses = this.router.GetResponses(bespokeRequest);
-            var responseNames = responses.Cast<BespokeResponseStub>().Select(r => r.ResponseName).ToList();
+            var bespokeRequest = new RequestStub();
+            var responses = this.requestHandler.GetResponses(bespokeRequest);
+            var responseNames = responses.Cast<ResponseStub>().Select(r => r.ResponseName).ToList();
             Assert.Contains("Response", responseNames);
             Assert.Contains("ResponseTwo", responseNames);
         }

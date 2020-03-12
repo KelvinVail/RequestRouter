@@ -3,7 +3,7 @@
     using System;
     using Xunit;
 
-    public class StandardRequestTests : StandardRequestBase
+    public class RequestTests : RequestBase
     {
         [Fact]
         public void RequestHasGuidLogId()

@@ -1,7 +1,9 @@
 ﻿namespace RequestRouter.ProductOne
 {
-    public class RequestOne : RequestBase
+    public class ResponseOne : ResponseBase
     {
         public string Id { get; set; }
+
+        public string RequestId { get; set; }
     }
 }

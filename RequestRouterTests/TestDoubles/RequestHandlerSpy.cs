@@ -1,10 +1,17 @@
 ﻿namespace RequestRouter.Tests.TestDoubles
 {
-    public class BespokeRequestStub : RequestBase
+    using System.Collections.Generic;
+
+    public class RequestHandlerSpy : RequestHandlerBase
     {
+        public RequestHandlerSpy(IEnumerable<ResponderBase> responders)
+            : base(responders)
+        {
+        }
+
         public bool ConvertedToStandard { get; set; }
 
-        public override StandardRequestBase ToStandard()
+        public override StandardRequestBase ToStandard(RequestBase request)
         {
             this.ConvertedToStandard = true;
             return new StandardRequestStub();
@@ -13,7 +20,7 @@
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
             var stub = (StandardResponseStub)standardResponse;
-            return new BespokeResponseStub { ResponseName = stub?.ResponseName };
+            return new ResponseStub { ResponseName = stub.ResponseName };
         }
     }
 }

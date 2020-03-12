@@ -1,9 +1,14 @@
 ﻿namespace RequestRouter
 {
+    using System;
+
     public abstract class RequestBase
     {
-        public abstract StandardRequestBase ToStandard();
+        protected RequestBase()
+        {
+            this.LogId = Guid.NewGuid().ToString();
+        }
 
-        public abstract ResponseBase FromStandard(StandardResponseBase standardResponse);
+        public string LogId { get; set; }
     }
 }
