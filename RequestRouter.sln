@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductOne", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductOne.Tests", "RequestRouter.ProductOne.Tests\RequestRouter.ProductOne.Tests.csproj", "{858F8283-7077-43B3-8E1F-27EE782FDF68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductTwo", "RequestRouter.ProductTwo\RequestRouter.ProductTwo.csproj", "{885E5CD0-1EA8-4BA9-AF5E-8B2D3A610A57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductTwo.Tests", "RequestRouter.ProductTwo.Tests\RequestRouter.ProductTwo.Tests.csproj", "{3E1C8EC4-9F0A-4812-9842-2938AB17519B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858F8283-7077-43B3-8E1F-27EE782FDF68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885E5CD0-1EA8-4BA9-AF5E-8B2D3A610A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885E5CD0-1EA8-4BA9-AF5E-8B2D3A610A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885E5CD0-1EA8-4BA9-AF5E-8B2D3A610A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885E5CD0-1EA8-4BA9-AF5E-8B2D3A610A57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1C8EC4-9F0A-4812-9842-2938AB17519B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E1C8EC4-9F0A-4812-9842-2938AB17519B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E1C8EC4-9F0A-4812-9842-2938AB17519B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E1C8EC4-9F0A-4812-9842-2938AB17519B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
