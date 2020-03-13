@@ -25,4 +25,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --nologo --output nupkgs
     - name: Publish
-      run: dotnet nuget push "/home/runner/work/RequestRouter/RequestRouter/nupkgs/RequestRouter.1.0.0.nupkg" -s https://nuget.pkg.github.com/kelvinvail/index.json -k ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push "/home/runner/work/RequestRouter/RequestRouter/nupkgs/RequestRouter.1.0.0.nupkg" -s https://nuget.pkg.github.com/kelvinvail/requestrouter/index.json -k ${{ secrets.GITHUB_TOKEN }}
