@@ -23,3 +23,5 @@ jobs:
       run: dotnet test --nologo
     - name: Pack
       run: dotnet pack --nologo --output nupkgs
+    - name: Push
+      run: dotnet nuget push "/home/runner/work/RequestRouter/RequestRouter/nupkgs/RequestRouter.1.0.0.nupkg" --source "github"
