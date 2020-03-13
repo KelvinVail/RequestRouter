@@ -20,7 +20,7 @@ jobs:
     - name: Setup Nuget.exe
       uses: olegtarasov/download-nuget@v1
     - name: Add GPR Source
-      run: /home/runner/work/_temp/nuget.exe sources add -name "GPR" -Source https://nuget.pkg.github.com/kelvinvail/index.json -Username kelvinvail -Password ${{ secrets.GITHUB_TOKEN }}    
+      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/kelvinvail/index.json -Username kelvinvail -Password ${{ secrets.GITHUB_TOKEN }}    
     - name: Build
       run: dotnet build --configuration Release --nologo
     - name: Test
