@@ -28,6 +28,6 @@ jobs:
     - name: Add GPR Source
       run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/kelvinvail/index.json -Username kelvinvail -Password ${{ secrets.GITHUB_TOKEN }}    
     - name: Publish
-      run: dotnet nuget push "D:\a\RequestRouter\RequestRouter\nupkgs\RequestRouter.1.0.0.nupkg" -s "GPR"
+      run: dotnet nuget push "D:\a\RequestRouter\RequestRouter\nupkgs\RequestRouter.1.0.001.nupkg" -s "GPR"
     - name: Publish Example
       run: dotnet nuget push "D:\a\RequestRouter\RequestRouter\nupkgs\RequestRouter.ProductTwo.1.0.0.nupkg" -s "GPR"
