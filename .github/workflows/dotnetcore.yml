@@ -20,7 +20,7 @@ jobs:
     - name: Setup Nuget.exe
       uses: olegtarasov/download-nuget@v1
     - name: Add nuget alias
-      run: alias nuget="mono /usr/local/bin/nuget.exe"
+      run: alias nuget="mono /home/runner/work/_temp/nuget.exe"
     - name: Add GPR Source
       run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/kelvinvail/index.json -Username kelvinvail -Password ${{ secrets.GITHUB_TOKEN }}    
     - name: Build
