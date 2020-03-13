@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
 
@@ -20,8 +20,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --nologo
     - name: Test
-      run: dotnet test --nologo
+      run: dotnet test --configuration Release --nologo
     - name: Pack
-      run: dotnet pack --nologo --output nupkgs
+      run: dotnet pack --configuration Release --nologo --output nupkgs
     - name: Push
       run: dotnet nuget push "/home/runner/work/RequestRouter/RequestRouter/nupkgs/RequestRouter.1.0.0.nupkg" --source "github"
