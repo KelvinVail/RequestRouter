@@ -20,6 +20,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --nologo
     - name: Test
-      run: dotnet test --no-build --nologo
+      run: dotnet test --nologo
     - name: Pack
-      run: dotnet pack --no-build --nologo --output nupkgs
+      run: dotnet pack --nologo --output nupkgs
