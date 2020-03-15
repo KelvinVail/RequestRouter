@@ -9,7 +9,7 @@ on:
 jobs:
   publish:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -21,13 +21,17 @@ jobs:
       run: dotnet build --configuration Release --nologo
     - name: Test
       run: dotnet test --configuration Release --nologo
-    - name: Pack
-      run: dotnet pack --configuration Release --nologo --output nupkgs
-    - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
-    - name: Add GPR Source
-      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/kelvinvail/index.json -Username kelvinvail -Password ${{ secrets.GITHUB_TOKEN }}    
-    - name: Publish
-      run: dotnet nuget push "D:\a\RequestRouter\RequestRouter\nupkgs\RequestRouter.1.0.1.nupkg" -s "GPR"
-    - name: Publish Example
-      run: dotnet nuget push "D:\a\RequestRouter\RequestRouter\nupkgs\RequestRouter.ProductTwo.1.0.0.nupkg" -s "GPR"
+    # Publish RequestRouter
+    - name: publish RequestRouter on version change
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: RequestRouter/RequestRouter.csproj
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_COMMIT: false
+    # Publish RequestRouter.ProductTwo
+    - name: publish RequestRouter.ProductTwo on version change
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: RequestRouter.ProductTwo/RequestRouter.ProductTwo.csproj
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_COMMIT: false
