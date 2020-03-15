@@ -3,11 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>RequestRouter</PackageId>
-    <Version>1.0.001</Version>
-    <Authors>KelvinVail</Authors>
-    <Company>KelvinVail</Company>
+    <Version>1.0.0-alpha</Version>
+    <Authors>Kelvin Vail</Authors>
+    <Company>Kelvin Vail</Company>
     <PackageDescription>This package adds a Request Router</PackageDescription>
     <RepositoryUrl>https://github.com/kelvinvail/requestrouter</RepositoryUrl>
+    <Product>Request Router</Product>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
