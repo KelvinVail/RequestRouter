@@ -8,5 +8,12 @@
             var req = new SmashingBrokerRequest();
         }
 
+        [Fact]
+        public void SmashingBrokerRequestImplementsRequestBase()
+        {
+            var req = new SmashingBrokerRequest();
+            Assert.IsAssignableFrom<RequestBase>(req);
+        }
+
     }
 }

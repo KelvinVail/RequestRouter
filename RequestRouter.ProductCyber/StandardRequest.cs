@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RequestRouter.ProductCyber
 {
-    public class SmashingBrokerRequest : RequestBase
+    public class StandardRequest
     {
     }
 }
