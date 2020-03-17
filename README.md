@@ -50,7 +50,7 @@ public class MyStandardResponse : StandardResponseBase
 ```
 ### Requesters
 #### Request
-Use the ```RequestBase``` class to define each individual requesters data structure.
+Use the ```RequestBase``` class to define each unique request data structure.
 ```java
 public class MyRequest : RequestBase
 {
@@ -119,6 +119,28 @@ protected override StandardResponseBase GetResponse(StandardRequestBase standard
 	};
 }
 ```
+### Summary
+Bring it all together by creating a request, pass the responders you want to use
+into a request handler, then ask for responses.
+```java
+var request = new MyRequest
+{
+	RequestNumber = 1,
+	MyName = "Bob",
+};
 
+var responders = new List<ResponderBase>
+{
+	new MyResponder(),
+};
 
+var handler = new MyRequestHandler(responders);
 
+var responses = handler.GetResponses(request);
+```
+
+Using these classes it is possible to create multilple bespoke responders able to
+respond to the original request without making any changes to that request.
+
+It is also possible to add more bespoke requesters able to communicate with all existing
+responders without making any changes to those responders.  
