@@ -1,8 +1,7 @@
-﻿using System.Globalization;
-
-namespace RequestRouter.ProductTwo
+﻿namespace RequestRouter.ProductTwo
 {
     using System.Collections.Generic;
+    using System.Globalization;
 
     public class BrokerOneRequestHandler : RequestHandlerBase
     {
@@ -31,7 +30,7 @@ namespace RequestRouter.ProductTwo
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
             if (standardResponse is null) return null;
-            var standard = (MrcResponse) standardResponse;
+            var standard = (MrcResponse)standardResponse;
 
             var response = new BrokerOneResponse
             {
