@@ -6,7 +6,7 @@
     public class SmashingBrokerTests
     {
         [Fact]
-        public void SamshingBrokerRequestExists() {
+        public void SmashingBrokerRequestExists() {
             var req = new SmashingBrokerRequest();
         }
 
@@ -64,13 +64,11 @@
             var res = handler.FromStandard(standardResponse);
 
             Assert.IsAssignableFrom<ResponseBase>(res);
-            
         }
 
         [Fact]
         public void BrokerResponseHasExpectedPremium()
         {
-
             var handler = new SmashingBrokerRequestHandler(new List<ResponderBase>());
             var res = handler.FromStandard(new StandardResponse { Premium = 100.00m });
             Assert.Equal(100.00m, (res as SmashingBrokerResponse).AnnualPremium);
