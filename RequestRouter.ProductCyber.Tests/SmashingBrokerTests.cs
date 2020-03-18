@@ -3,10 +3,10 @@
     using System;
     using System.Collections.Generic;
     using Xunit;
-    public class SmashingBrokerRequestTests
+    public class SmashingBrokerTests
     {
         [Fact]
-        public void Exists() {
+        public void SamshingBrokerRequestExists() {
             var req = new SmashingBrokerRequest();
         }
 
@@ -48,5 +48,29 @@
             Assert.Equal(req.NamedInsured, standardReq.Insured);
         }
 
+
+
+        [Fact]
+        public void SmashingBrokerResponseExists() 
+        {
+            var res = new SmashingBrokerResponse();
+        }
+
+        [Fact]
+        public void CanConvertFromStandardResponseToSmashingBrokerResponse() 
+        {
+            var standardResponse = new StandardResponse();
+
+            var handler = new SmashingBrokerRequestHandler(new List<ResponderBase>());
+            var res = handler.FromStandard(standardResponse);
+
+            Assert.IsAssignableFrom<ResponseBase>(res);
+
+
+        }
+
     }
+
+
+
 }

@@ -10,7 +10,12 @@ namespace RequestRouter.ProductCyber
 
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
-            throw new System.NotImplementedException();
+            if (standardResponse is null) return null;
+            
+            return new SmashingBrokerResponse { 
+                ResponderName = standardResponse.ResponderName,
+                RequestLogId = standardResponse.RequestLogId,
+            };
         }
 
         public override StandardRequestBase ToStandard(RequestBase request)
