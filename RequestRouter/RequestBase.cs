@@ -9,6 +9,6 @@
             this.LogId = Guid.NewGuid().ToString();
         }
 
-        public string LogId { get; set; }
+        public string LogId { get; internal set; }
     }
 }

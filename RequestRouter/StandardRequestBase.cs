@@ -2,6 +2,6 @@
 {
     public abstract class StandardRequestBase
     {
-        public string LogId { get; set; }
+        public string LogId { get; internal set; }
     }
 }

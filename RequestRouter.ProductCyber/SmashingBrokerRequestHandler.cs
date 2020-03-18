@@ -35,7 +35,6 @@ namespace RequestRouter.ProductCyber
             var brokerReq = (SmashingBrokerRequest)request;
 
             return new StandardRequest {
-                LogId = request.LogId,
                 Insured = brokerReq.NamedInsured,
                 Phone = brokerReq.InsuredPhone,
                 BusinessAddress = brokerReq.InsuredBusinessAddress,

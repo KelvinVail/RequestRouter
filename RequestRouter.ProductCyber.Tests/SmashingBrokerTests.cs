@@ -23,7 +23,6 @@
             var req = new SmashingBrokerRequest {
                 
                 // General Information
-                LogId = Guid.NewGuid().ToString(),
                 NamedInsured = "Fraternal Society Inc",
                 InsuredPhone = "(123) 456-7890",
                 InsuredMailingAddress = "100 Second St, Belle Chasse, LA, 70037",
