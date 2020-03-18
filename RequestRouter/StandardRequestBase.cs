@@ -1,7 +1,6 @@
 ﻿namespace RequestRouter
 {
-    public abstract class StandardRequestBase
+    public abstract class StandardRequestBase : RequestBase
     {
-        public string LogId { get; internal set; }
     }
 }

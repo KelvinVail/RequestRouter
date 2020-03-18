@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
-    public class MrcResponse : StandardResponseBase
+    public class StandardResponse : StandardResponseBase
     {
-        public MrcResponse()
+        public StandardResponse()
         {
             this.Subjectivities = new List<string>();
         }

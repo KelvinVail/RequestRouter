@@ -9,7 +9,7 @@
             if (standardRequest is null) return null;
             var standard = (StandardRequest)standardRequest;
 
-            return new MrcResponse
+            return new StandardResponse
             {
                 Umr = standard.Umr,
                 Type = standard.Type,

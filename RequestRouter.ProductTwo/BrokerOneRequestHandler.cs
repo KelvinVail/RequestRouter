@@ -30,7 +30,7 @@
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
             if (standardResponse is null) return null;
-            var standard = (MrcResponse)standardResponse;
+            var standard = (StandardResponse)standardResponse;
 
             var response = new BrokerOneResponse
             {
