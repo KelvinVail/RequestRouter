@@ -11,10 +11,21 @@ namespace RequestRouter.ProductCyber
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
             if (standardResponse is null) return null;
-            
-            return new SmashingBrokerResponse { 
+
+            var brokerResponse = (StandardResponse)standardResponse;
+
+            return new SmashingBrokerResponse {
                 ResponderName = standardResponse.ResponderName,
                 RequestLogId = standardResponse.RequestLogId,
+
+                AnnualPremium = brokerResponse.Premium,
+                AnnualPremiumTRIA = brokerResponse.PremiumTRIA,
+                Currency = brokerResponse.Currency,
+                AgencyFee = brokerResponse.AgencyFee,
+                EstimatedStampingFee = brokerResponse.StampingFee,
+                EstimatedSurplusLInesTax = brokerResponse.SurplusLinesTax,
+                GeneralAggregateLimit = brokerResponse.Limit,
+                Notes = brokerResponse.Details
             };
         }
 
