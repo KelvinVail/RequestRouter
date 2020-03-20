@@ -13,7 +13,7 @@ standard and vise verse.
 
 ##### Installation
 ```
-dotnet add package RequestRouter --version 1.0.0-alpha
+dotnet add package RequestRouter --version 1.0.3-alpha
 ```
 
 ## Examples
