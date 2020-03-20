@@ -1,15 +1,16 @@
 ﻿namespace RequestRouter.ProductTwo
 {
     using System;
+    using System.Threading.Tasks;
 
     public class ManagingAgentThree : ResponderBase
     {
-        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequest)
+        protected override async Task<StandardResponseBase> GetResponseAsync(StandardRequestBase standardRequest)
         {
             if (standardRequest is null) return null;
             var standard = (StandardRequest)standardRequest;
 
-            return new StandardResponse
+            return await Task.FromResult(new StandardResponse
             {
                 Umr = standard.Umr,
                 Type = standard.Type,
@@ -18,7 +19,7 @@
                 Interest = standard.Interest,
                 InsurersLiability = 0.1,
                 Premium = Math.Round(standard.LimitsOfLiability * standard.Order * 0.1, 2),
-            };
+            });
         }
     }
 }

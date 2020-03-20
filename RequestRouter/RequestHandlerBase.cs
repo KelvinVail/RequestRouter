@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public abstract class RequestHandlerBase
     {
@@ -12,13 +13,13 @@
             this.responders = responders;
         }
 
-        public IEnumerable<ResponseBase> GetResponses(RequestBase request)
+        public async Task<IEnumerable<ResponseBase>> GetResponsesAsync(RequestBase request)
         {
             if (request is null) return null;
 
             var standardRequest = this.ToStandard(request);
             standardRequest.LogId = request.LogId;
-            var standardResponse = this.GetResponses(standardRequest);
+            var standardResponse = await this.GetResponsesAsync(standardRequest);
             var responses = standardResponse.Select(this.ToResponse);
             return responses;
         }
@@ -27,9 +28,9 @@
 
         public abstract ResponseBase FromStandard(StandardResponseBase standardResponse);
 
-        private IEnumerable<StandardResponseBase> GetResponses(StandardRequestBase standardRequest)
+        private async Task<IEnumerable<StandardResponseBase>> GetResponsesAsync(StandardRequestBase standardRequest)
         {
-            return this.responders.Select(r => r.Execute(standardRequest));
+            return await Task.WhenAll(this.responders.Select(async r => await r.ExecuteAsync(standardRequest)));
         }
 
         private ResponseBase ToResponse(StandardResponseBase standardResponse)

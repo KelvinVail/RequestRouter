@@ -1,15 +1,17 @@
 ﻿namespace RequestRouter
 {
+    using System.Threading.Tasks;
+
     public abstract class ResponderBase
     {
-        internal StandardResponseBase Execute(StandardRequestBase standardRequest)
+        internal async Task<StandardResponseBase> ExecuteAsync(StandardRequestBase standardRequest)
         {
-            var response = this.GetResponse(standardRequest);
+            var response = await this.GetResponseAsync(standardRequest);
             response.RequestLogId = standardRequest.LogId;
             response.ResponderName = this.GetType().Name;
             return response;
         }
 
-        protected abstract StandardResponseBase GetResponse(StandardRequestBase standardRequest);
+        protected abstract Task<StandardResponseBase> GetResponseAsync(StandardRequestBase standardRequest);
     }
 }

@@ -1,16 +1,11 @@
-﻿using RequestRouter.ProductCyber.Responders;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-namespace RequestRouter.ProductCyber
+﻿namespace RequestRouter.ProductCyber.Responders
 {
+    using System.Threading.Tasks;
+
     public class ACMEResponder : ResponderBase
     {
-        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequest)
+        protected override async Task<StandardResponseBase> GetResponseAsync(StandardRequestBase standardRequest)
         {
-
             var standardResponse = new StandardResponse
             {
                 Premium = 8394.00m,
@@ -22,9 +17,7 @@ namespace RequestRouter.ProductCyber
                 Details = "Lasdkjgasdg ahs dash asdkjh kj",
             };
 
-            return standardResponse;
+            return await Task.FromResult(standardResponse);
         }
-
-        
     }
 }

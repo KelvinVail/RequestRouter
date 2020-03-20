@@ -20,9 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductTwo", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductTwo.Tests", "RequestRouter.ProductTwo.Tests\RequestRouter.ProductTwo.Tests.csproj", "{3E1C8EC4-9F0A-4812-9842-2938AB17519B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductCyber", "RequestRouter.ProductCyber\RequestRouter.ProductCyber.csproj", "{32A68237-2AC9-42E8-AB87-F3C709575D02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductCyber", "RequestRouter.ProductCyber\RequestRouter.ProductCyber.csproj", "{32A68237-2AC9-42E8-AB87-F3C709575D02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestRouter.ProductCyber.Tests", "RequestRouter.ProductCyber.Tests\RequestRouter.ProductCyber.Tests.csproj", "{8B74F33A-F813-45C3-9EA5-EACE8DBC98E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestRouter.ProductCyber.Tests", "RequestRouter.ProductCyber.Tests\RequestRouter.ProductCyber.Tests.csproj", "{8B74F33A-F813-45C3-9EA5-EACE8DBC98E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

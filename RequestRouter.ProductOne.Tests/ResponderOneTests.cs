@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class ResponderOneTests
@@ -35,19 +36,19 @@
         }
 
         [Fact]
-        public void ResponderOneAcceptsRequest()
+        public async Task ResponderOneAcceptsRequest()
         {
             var request = GetRequestExample();
-            var response = this.requestHandler.GetResponses(request).First();
-            Assert.IsAssignableFrom<ResponseBase>(response);
+            var response = await this.requestHandler.GetResponsesAsync(request);
+            Assert.IsAssignableFrom<ResponseBase>(response.First());
         }
 
         [Fact]
-        public void ResponseContainsResponderName()
+        public async Task ResponseContainsResponderName()
         {
             var request = GetRequestExample();
-            var response = this.requestHandler.GetResponses(request).First();
-            Assert.Equal("ResponderOne", response.ResponderName);
+            var response = await this.requestHandler.GetResponsesAsync(request);
+            Assert.Equal("ResponderOne", response.First().ResponderName);
         }
 
         [Fact]
@@ -58,19 +59,19 @@
         }
 
         [Fact]
-        public void ResponseContainsRequestId()
+        public async Task ResponseContainsRequestId()
         {
             var request = GetRequestExample();
-            var response = this.requestHandler.GetResponses(request).Cast<ResponseOne>().First();
-            Assert.Equal("RequestId", response.RequestId);
+            var response = await this.requestHandler.GetResponsesAsync(request);
+            Assert.Equal("RequestId", response.Cast<ResponseOne>().First().RequestId);
         }
 
         [Fact]
-        public void ResponseContainsAnId()
+        public async Task ResponseContainsAnId()
         {
             var request = GetRequestExample();
-            var response = this.requestHandler.GetResponses(request).Cast<ResponseOne>().First();
-            Assert.Equal("ResponseId", response.Id);
+            var response = await this.requestHandler.GetResponsesAsync(request);
+            Assert.Equal("ResponseId", response.Cast<ResponseOne>().First().Id);
         }
 
         private static RequestOne GetRequestExample()

@@ -20,7 +20,7 @@
         public override ResponseBase FromStandard(StandardResponseBase standardResponse)
         {
             var stub = (StandardResponseStub)standardResponse;
-            return new ResponseStub { ResponseName = stub.ResponseName };
+            return new ResponseStub { ResponseName = stub?.ResponseName };
         }
     }
 }

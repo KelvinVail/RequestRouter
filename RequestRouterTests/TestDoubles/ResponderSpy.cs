@@ -1,6 +1,6 @@
 ﻿namespace RequestRouter.Tests.TestDoubles
 {
-    using System;
+    using System.Threading.Tasks;
 
     public class ResponderSpy : ResponderBase
     {
@@ -18,10 +18,10 @@
 
         public bool GetResponseCalled { get; private set; }
 
-        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequestBase)
+        protected override async Task<StandardResponseBase> GetResponseAsync(StandardRequestBase standardRequestBase)
         {
             this.GetResponseCalled = true;
-            return this.standardResponse;
+            return await Task.FromResult(this.standardResponse);
         }
     }
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>RequestRouter.ProductTwo</PackageId>
-    <Version>1.0.0-alpha</Version>
+    <Version>1.0.1-alpha</Version>
     <Authors>KelvinVail</Authors>
     <Company>Kelvin Vail</Company>
     <PackageDescription>This package adds an example use of Request Router</PackageDescription>

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using RequestRouter.Tests.TestDoubles;
     using Xunit;
 
@@ -17,31 +18,31 @@
         }
 
         [Fact]
-        public void GetResponseReturnsResponse()
+        public async Task GetResponseReturnsResponse()
         {
-            var responses = this.requestHandler.GetResponses(this.request);
+            var responses = await this.requestHandler.GetResponsesAsync(this.request);
             Assert.IsAssignableFrom<ResponseBase>(responses.FirstOrDefault());
         }
 
         [Fact]
-        public void ReturnNullIfRequestIsNull()
+        public async Task ReturnNullIfRequestIsNull()
         {
-            var response = this.requestHandler.GetResponses(null);
+            var response = await this.requestHandler.GetResponsesAsync(null);
             Assert.Null(response);
         }
 
         [Fact]
-        public void ResponseContainsRequestId()
+        public async Task ResponseContainsRequestId()
         {
-            var response = this.requestHandler.GetResponses(this.request).First();
-            Assert.Equal(this.request.LogId, response.RequestLogId);
+            var response = await this.requestHandler.GetResponsesAsync(this.request);
+            Assert.Equal(this.request.LogId, response.First().RequestLogId);
         }
 
         [Fact]
-        public void ResponseContainsResponderName()
+        public async Task ResponseContainsResponderName()
         {
-            var response = this.requestHandler.GetResponses(this.request).First();
-            Assert.Equal(this.responder.GetType().Name, response.ResponderName);
+            var response = await this.requestHandler.GetResponsesAsync(this.request);
+            Assert.Equal(this.responder.GetType().Name, response.First().ResponderName);
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using RequestRouter.Tests.TestDoubles;
     using Xunit;
 
@@ -20,64 +21,64 @@
         }
 
         [Fact]
-        public void GetResponsesReturnsResponses()
+        public async Task GetResponsesReturnsResponses()
         {
-            var responses = this.requestHandler.GetResponses(this.request);
+            var responses = await this.requestHandler.GetResponsesAsync(this.request);
             Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
         }
 
         [Fact]
-        public void OnGetResponsesResponderIsCalled()
+        public async Task OnGetResponsesResponderIsCalled()
         {
-            var responses = this.requestHandler.GetResponses(this.request);
+            var responses = await this.requestHandler.GetResponsesAsync(this.request);
             Assert.NotEmpty(responses);
             Assert.True(this.responder.GetResponseCalled);
         }
 
         [Fact]
-        public void OnGetResponsesMultipleResponsesCanBeReturned()
+        public async Task OnGetResponsesMultipleResponsesCanBeReturned()
         {
-            var responses = this.requestHandler.GetResponses(this.request).ToList();
-            Assert.True(responses.Count > 1);
+            var responses = await this.requestHandler.GetResponsesAsync(this.request);
+            Assert.True(responses.ToList().Count > 1);
         }
 
         [Fact]
-        public void OnGetResponsesSubTypePropertiesAreMaintained()
+        public async Task OnGetResponsesSubTypePropertiesAreMaintained()
         {
-            var responses = this.requestHandler.GetResponses(this.request);
+            var responses = await this.requestHandler.GetResponsesAsync(this.request);
             var responseNames = responses.Cast<ResponseStub>().Select(r => r.ResponseName).ToList();
             Assert.Contains("Response", responseNames);
             Assert.Contains("ResponseTwo", responseNames);
         }
 
         [Fact]
-        public void GetResponsesAcceptsABespokeRequest()
+        public async Task GetResponsesAcceptsABespokeRequest()
         {
             var bespokeRequest = new RequestStub();
-            var responses = this.requestHandler.GetResponses(bespokeRequest);
+            var responses = await this.requestHandler.GetResponsesAsync(bespokeRequest);
             Assert.IsAssignableFrom<IEnumerable<ResponseBase>>(responses);
         }
 
         [Fact]
-        public void WhenRequestIsBespokeItIsConvertedToStandard()
+        public async Task WhenRequestIsBespokeItIsConvertedToStandard()
         {
             var bespokeRequest = new RequestStub();
-            this.requestHandler.GetResponses(bespokeRequest);
+            await this.requestHandler.GetResponsesAsync(bespokeRequest);
             Assert.True(this.requestHandler.ConvertedToStandard);
         }
 
         [Fact]
-        public void WhenRequestIsNullReturnNull()
+        public async Task WhenRequestIsNullReturnNull()
         {
-            var responses = this.requestHandler.GetResponses(null);
+            var responses = await this.requestHandler.GetResponsesAsync(null);
             Assert.Null(responses);
         }
 
         [Fact]
-        public void WhenRequestIsBespokeResponderResponseIsReturned()
+        public async Task WhenRequestIsBespokeResponderResponseIsReturned()
         {
             var bespokeRequest = new RequestStub();
-            var responses = this.requestHandler.GetResponses(bespokeRequest);
+            var responses = await this.requestHandler.GetResponsesAsync(bespokeRequest);
             var responseNames = responses.Cast<ResponseStub>().Select(r => r.ResponseName).ToList();
             Assert.Contains("Response", responseNames);
             Assert.Contains("ResponseTwo", responseNames);

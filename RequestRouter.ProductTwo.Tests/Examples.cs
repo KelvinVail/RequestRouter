@@ -2,12 +2,13 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class Examples
     {
         [Fact]
-        public void ExampleOne()
+        public async Task ExampleOne()
         {
             var request = new BrokerOneRequest
             {
@@ -29,13 +30,13 @@
 
             var handler = new BrokerOneRequestHandler(responders);
 
-            var responses = handler.GetResponses(request);
+            var responses = await handler.GetResponsesAsync(request);
 
             Assert.True(responses.Count() == 3);
         }
 
         [Fact]
-        public void ExampleOfStandardRequest()
+        public async Task ExampleOfStandardRequest()
         {
             var request = new StandardRequest
             {
@@ -57,7 +58,7 @@
 
             var handler = new StandardHandler(responders);
 
-            var responses = handler.GetResponses(request);
+            var responses = await handler.GetResponsesAsync(request);
 
             Assert.True(responses.Count() == 3);
         }

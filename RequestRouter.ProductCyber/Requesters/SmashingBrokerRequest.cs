@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RequestRouter.ProductCyber
+﻿namespace RequestRouter.ProductCyber
 {
+    using System;
+
     public class SmashingBrokerRequest : RequestBase
     {
         public string NamedInsured { get; set; }

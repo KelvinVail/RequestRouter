@@ -1,9 +1,11 @@
 ﻿namespace RequestRouter.ProductCyber.Tests
 {
+    using System.Threading.Tasks;
     using RequestRouter;
     using RequestRouter.ProductCyber.Responders;
     using Xunit;
-    public class ACMEResponderTests: ACMEResponder
+
+    public class ACMEResponderTests : ACMEResponder
     {
         [Fact]
         public void ResponderExistsAndIsResponderBase()
@@ -13,23 +15,18 @@
         }
 
         [Fact]
-        public void ResponseExistsAndIsResponseBase() 
+        public void ResponseExistsAndIsResponseBase()
         {
             var response = new ACMEResponse();
             Assert.IsAssignableFrom<ResponseBase>(response);
         }
 
         [Fact]
-        public void ResponderGetResponseReturnsAStandardResponse()
+        public async Task ResponderGetResponseReturnsAStandardResponse()
         {
             var standardRequest = new StandardRequest();
-            var response = GetResponse(standardRequest);
+            var response = await this.GetResponseAsync(standardRequest);
             Assert.IsAssignableFrom<StandardResponseBase>(response);
-        }
-
-        protected override StandardResponseBase GetResponse(StandardRequestBase standardRequest)
-        {
-            return base.GetResponse(standardRequest);
         }
     }
 }
