@@ -14,7 +14,9 @@
                 SurplusLinesTax = 411.96m,
                 StampingFee = 12.74m,
                 AgencyFee = 100.00m,
-                Details = "Lasdkjgasdg ahs dash asdkjh kj",
+                Details = @"The tax calculation rates and percentages are for informational purposes only. 
+                            We are not responsible for accurate and timely tax filings unless otherwise mutually agreed
+                            to in writing between both parties. Certain ploicies may be subject to an additional $250 inspection fee.",
             };
 
             return await Task.FromResult(standardResponse);
